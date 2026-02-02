@@ -14,20 +14,18 @@ app = FastAPI(
 
 # Get the deployed frontend URL from an environment variable.
 # Fallback to localhost for local development.
-FRONTEND_URL = os.getenv("FRONTEND_URL","https://magento-ai-operator-1.onrender.com")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://magento-ai-operator-1.onrender.com")
 
-origins = [
-    FRONTEND_URL,
-    "http://localhost:3000",  # Your local Next.js frontend
-    "http://localhost:5173",  # The old Vite frontend, just in case
-]
+# origins = [
+#     FRONTEND_URL,
+#     "http://localhost:3000",  # Your local Next.js frontend
+#     "http://localhost:5173",  # The old Vite frontend, just in case
+# ]
 
 # Add the CORSMiddleware to your application
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://magento-ai-operator-1.onrender.com",
-    ],
+    allow_origins=[FRONTEND_URL],  # List of origins that are allowed to make requests
     allow_credentials=True,  # Allow cookies to be included in requests
     allow_methods=["*"],     # Allow all methods (GET, POST, PUT, DELETE, etc.)
     allow_headers=["*"],     # Allow all headers
