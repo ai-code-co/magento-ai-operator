@@ -14,7 +14,7 @@ app = FastAPI(
 
 # Get the deployed frontend URL from an environment variable.
 # Fallback to localhost for local development.
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+FRONTEND_URL = os.getenv("FRONTEND_URL","https://magento-ai-operator-1.onrender.com")
 
 origins = [
     FRONTEND_URL,
